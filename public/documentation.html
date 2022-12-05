@@ -5,11 +5,84 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOCUMENTATION</title>
+  <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
-  <h1>DOCUMENTATION PAGE</h1>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-     Nobis placeat hic consequuntur totam illum explicabo veritatis,
-     sit iusto consequatur odio.</p>
+
+  <h1>URL Endpoints of the Blockbuster Movies API:</h1>
+  <table>
+    <tr>
+      <th>Business Logic</th>
+      <th>URL</th>
+      <th>HTTP Method</th>
+      <th>Request body data format</th>
+      <th>Response body data format</th>
+    </tr>
+    <tr>
+      <td>[1] Return a list of ALL movies to the user</td>
+      <td>/movies</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>A JSON object holding data about ALL movies that were requested.</td>
+    </tr>
+    <tr>
+      <td>[2] Return data (description, genre, director, image URL,<br> whether 
+        it’s featured or not) about a single movie by title to the user</td>
+      <td>/movies/:title</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>A JSON object holding data about a single movie that was requested.</td>
+    </tr>
+    <tr>
+      <td>[3] Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
+      <td>/movies/genres/:title</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>A JSON object holding data about ALL movies that were requested.</td>
+    </tr>
+    <tr>
+      <td>[4] Return data about a director (bio, birth year, death year) by name</td>
+      <td>/directors/:name</td>
+      <td>GET</td>
+      <td>none</td>
+      <td>Returns a JSON object.</td>
+    </tr>
+    <tr>
+      <td>[5] Allow new users to register</td>
+      <td>/users</td>
+      <td>POST</td>
+      <td>Text message the the user was registered.</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <td>[6] Allow users to update their user info (username)</td>
+      <td>/users/:username</td>
+      <td>PUT</td>
+      <td>none</td>
+      <td>Returns a JSON object about with the new user data.</td>
+    </tr>
+    <tr>
+      <td>[7] Allow users to add a movie to their list of favorites (showing only a text that a movie has been added—more on this later)</td>
+      <td>/users/:username/movies/:movieID</td>
+      <td>POST</td>
+      <td>A JSON object containing movie data.</td>
+      <td>Delivers an updated JSON Object with ALL user movie favorites.</td>
+    </tr>
+    <tr>
+      <td>[8] Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)</td>
+      <td>/users/:username/movies/:movieID</td>
+      <td>DELETE</td>
+      <td>Sends an JSON object.</td>
+      <td>Text message that the desired movie was deleted.</td>
+    </tr>
+    <tr>
+      <td>[9] Allow existing users to deregister (showing only a text that a user email has been removed—more on this later)</td>
+      <td>/users/:username</td>
+      <td>DELETE</td>
+      <td>none</td>
+      <td>Text message that the user was deleted.</td>
+    </tr>
+  </table>
+
 </body>
 </html>

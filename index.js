@@ -1,7 +1,12 @@
 const express = require('express'),
+bodyParser = require('body-parser'),
+uuid = require('uuid'),
 morgan = require('morgan');
 
 const app = express();
+
+app.use(bodyParser.json());
+
 
 app.use(morgan('common'));
 
@@ -49,18 +54,10 @@ let myMovies = [
     },
   ];
 
-// GET requests
+// GET all movies
 app.get('/movies', (req, res) => {
     res.json(myMovies);
 });
-
-app.get('/', (req, res) => {
-    res.send('<h1 style="text-align: center; margin-top: 20px";>Welcome to the best Star Wars Movie Collection!</h1>')
-});
-
-// app.get('/documentation', (req, res) => {
-//     res.sendFile('public/documentation.html', {root: __dirname});
-// });
 
 app.use('/public', express.static(__dirname + '/public'));
 
