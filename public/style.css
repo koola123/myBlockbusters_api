@@ -30,7 +30,7 @@ th {
     text-transform: uppercase;
     padding: 20px;
     text-decoration: underline;
-    border: 1px solid var(--primary-color);
+    border: 5px solid var(--primary-color);
 }
 
 tr {
