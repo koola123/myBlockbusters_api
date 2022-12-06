@@ -14,43 +14,43 @@ app.use(morgan('common'));
 
 let myMovies = [
     {
-        title: 'Star Wars: Episode I - The Phantom Menace',
+        title: 'The Phantom Menace',
         director: 'George Lucas'
     },
     {
-        title: 'Star Wars: Episode II - Attack of the Clones',
+        title: 'Attack of the Clones',
         director: 'George Lucas'
     },
     {
-        title: 'Star Wars: Episode III - Revenge of the Sith',
+        title: 'Revenge of the Sith',
         director: 'George Lucas'
     },
     {
-        title: 'Star Wars: Episode IV - A new Hope',
+        title: 'A new Hope',
         director: 'George Lucas'
     },
     {
-        title: 'Star Wars: Episode V - The Empire Strikes Back',
+        title: 'The Empire Strikes Back',
         director: 'Irvin Kershner'
     },
     {
-        title: 'Star Wars:  Episode VI - Return of the Jedi ',
+        title: 'Return of the Jedi ',
         director: 'Richard Marquand'
     },
     {
-        title: 'Star Wars: Epside VII - The Force Awakens',
+        title: 'The Force Awakens',
         director: 'J. J. Abrams'
     },
     {
-        title: 'Star Wars: Episode VIII - The Last Jedi',
+        title: 'The Last Jedi',
         director: 'Rian Johnson'
     },
     {
-        title: 'Star Wars IX - The Rise of Skywalker',
+        title: 'The Rise of Skywalker',
         director: 'J. J. Abrams'
     },
     { 
-        title: 'Rogue One: A Star Wars Story',
+        title: 'Rogue One',
         director: 'Gareth Edwards'
     },
   ];
@@ -87,7 +87,7 @@ app.post('/users', (req, res) => {
 
 // Update user information
 app.put('/users/:user', (req, res) => {
-    
+
 });
 
 // Add movie to user favorites
