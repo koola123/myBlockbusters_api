@@ -55,7 +55,7 @@ let myMovies = [
     },
   ];
 
-// Gets the list of data about ALL movies
+// Return a list of ALL movies
 app.get('/movies', (req, res) => {
     res.json(myMovies);
 });

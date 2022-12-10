@@ -5,12 +5,134 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DOCUMENTATION</title>
-  <link rel="stylesheet" href="style.css" type="text/css"/>
+  <style>
+
+  :root {
+      --primary-color: #000;
+      --secondary-color: #FFF;
+      --primary-bg-color: #4682B4;
+      --secondary-bg-color: #FFD700;
+  }
+
+  body {
+      color: var(--primary-color);
+      background-color: var(--primary-bg-color);
+  }
+
+  .intro {
+    color: var(--secondary-color);
+    text-align: justify;
+    font-size: 24px;
+    line-height: 1.7;
+    padding: 50px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+  }
+
+  .intro h2 {
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  ul {
+    list-style-type: square;
+  }
+
+  h1 {
+      text-align: center;
+      color: var(--secondary-color);
+      text-decoration: underline;
+  }
+
+  table {
+      display: flex;
+      flex-direction: column;
+      /* border-collapse: collapse; */
+      padding: 50px;
+      overflow-x: auto;
+  }
+
+  thead > tr:first-child {
+    background-color: gold;
+  }
+
+  th {
+      font-size: 22px;
+      text-transform: uppercase;
+      padding: 20px;
+      text-decoration: underline;
+      border: 5px solid var(--primary-color);
+  }
+
+  tr {
+     text-align: center;
+     background-color: var(--secondary-bg-color);
+  }
+
+  tr:nth-child(odd) {
+    background-color: yellow;
+  }
+
+  td {
+      padding: 20px;
+      border: 1px solid black;
+      text-align: left;
+      line-height: 1.5;
+  }
+
+  @media only screen and (max-width: 768px) {
+      h1 {
+          font-size: 25px;
+          margin-bottom: 5px;
+          margin-left: 100px;
+      }
+
+      th {
+          font-size: 15px;
+          min-width: 80px;
+      }
+
+      td {
+          font-size: 16px;
+          padding: 10px;
+          min-width: 80px;
+      }
+  }
+  </style>
 </head>
 <body>
-
+  <div class="intro">
+  <h1>Documentation & Objective</h1>
+  <p>To build a server-side component of a movie(s) application.
+  The web application will provide users with access to information about different
+  movies, directors, and genres.</p>
+  <p>Users will be able to sign up, update their personal
+  information - and create a list of their favorite movies as well.</p>
+  <h2>User Stories</h2>
+<ul>
+  <li>As a user, I want to be able to receive information on movies, directors, and genres so that<br>
+    I can learn more about movies I've watched or am interested in.
+    <li>As a user, I want to be able to create a profile so I can save data about my favorite movies.</li>
+  </li>
+</ul>
+<h2>Essential Features provided by the app</h2>
+<ul>
+  <li>Returns a list of ALL movies to the user.</li>
+  <li>Returns data about a specific genre, director, image URL about a single movie by title to the user.</li>
+  <li>Returns data about a genre(description) by name/title (e.g., Thriller).</li>
+  <li>Returns data about a director like bio, birth year, death year by name.</li>
+  <li>Allows new users to register.</li>
+  <li>Allows users to update their user info(username, password, email, date of birth).</li>
+  <li>Allows users to add a movie to their list of favorites.</li>
+  <li>Allows users to remove a movie from their list of favorites.</li>
+  <li>Allows existing users to deregister.</li>
+</ul>
+<h2>Used Tech Stack</h2>
+<p>MERN (MongoDB, ExpressJS, ReactJS, and NodeJS)</p>
+</div>
   <h1>URL Endpoints of the Blockbuster Movies API:</h1>
   <table>
+    <thead>
     <tr>
       <th>Business Logic</th>
       <th>URL</th>
@@ -18,33 +140,35 @@
       <th>Request body data format</th>
       <th>Response body data format</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
       <td>[1] Return a list of ALL movies to the user</td>
       <td>/movies</td>
       <td>GET</td>
-      <td>none</td>
+      <td>None</td>
       <td>A JSON object holding data about ALL movies that were requested.</td>
     </tr>
     <tr>
-      <td>[2] Return data (description, genre, director, image URL,<br> whether 
+      <td>[2] Return data (description, genre, director, image URL,<br> whether
         it’s featured or not) about a single movie by title to the user</td>
       <td>/movies/:title</td>
       <td>GET</td>
-      <td>none</td>
+      <td>None</td>
       <td>A JSON object holding data about a single movie that was requested.</td>
     </tr>
     <tr>
       <td>[3] Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
       <td>/movies/genres/:title</td>
       <td>GET</td>
-      <td>none</td>
+      <td>None</td>
       <td>A JSON object with the updated movie data.</td>
     </tr>
     <tr>
-      <td>[4] Return data about a director (bio, birth year, death year) by name</td>
+      <td>[4] Return data about a movie director (bio, birth year, death year) by name</td>
       <td>/directors/:name</td>
       <td>GET</td>
-      <td>none</td>
+      <td>None</td>
       <td>Returns a JSON object.</td>
     </tr>
     <tr>
@@ -52,13 +176,13 @@
       <td>/users</td>
       <td>POST</td>
       <td>A JSON object containing user data.</td>
-      <td>Text message that a new user was created.</td>
+      <td>Text message that new user was created.</td>
     </tr>
     <tr>
       <td>[6] Allow users to update their user info (username)</td>
       <td>/users/:username</td>
       <td>PUT</td>
-      <td>none</td>
+      <td>None</td>
       <td>Text message that user info was updated.</td>
     </tr>
     <tr>
@@ -66,23 +190,23 @@
       <td>/users/:username/movies/:movieID</td>
       <td>POST</td>
       <td>A JSON object containing movie data.</td>
-      <td>Text message that movie was added.</td>
+      <td>Delivers an updated JSON object of user favorites.</td>
     </tr>
     <tr>
       <td>[8] Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)</td>
       <td>/users/:username/movies/:movieID</td>
       <td>DELETE</td>
       <td>A JSON object containing movie data.</td>
-      <td>Text message that movie was deleted.</td>
+      <td>Delivers an updated JSON object of user favorites.</td>
     </tr>
     <tr>
       <td>[9] Allow existing users to deregister (showing only a text that a user email has been removed—more on this later)</td>
       <td>/users/:username</td>
       <td>DELETE</td>
-      <td>none</td>
+      <td>None</td>
       <td>Text message that the user was deleted.</td>
     </tr>
+  </tbody>
   </table>
-
 </body>
 </html>
