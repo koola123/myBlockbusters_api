@@ -49,7 +49,7 @@ let myMovies = [
         title: 'The Rise of Skywalker',
         director: 'J. J. Abrams'
     },
-    { 
+    {
         title: 'Rogue One',
         director: 'Gareth Edwards'
     },
@@ -82,7 +82,7 @@ app.get('/directors/:name', (req, res) => {
 
 // Register new user
 app.post('/users', (req, res) => {
-  
+
 });
 
 // Update user information
@@ -130,4 +130,3 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
     console.log('Your app is listening on port 8080');
 });
-
