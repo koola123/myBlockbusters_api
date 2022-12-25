@@ -147,7 +147,16 @@
       <td>[1] Return a list of ALL movies to the user</td>
       <td>/movies</td>
       <td>GET</td>
-      <td>None</td>
+      <td>app.get('/movies', (req, res) => {
+          Movies.find()
+          .then((movies) => {
+            res.status(200).json(movies);
+          })
+          .catch((error) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+          });
+      });</td>
       <td>A JSON object holding data about ALL movies that were requested.</td>
     </tr>
     <tr>
@@ -155,57 +164,195 @@
         it’s featured or not) about a single movie by title to the user</td>
       <td>/movies/:title</td>
       <td>GET</td>
-      <td>None</td>
+      <td>app.get('/movies/:Title', (req, res) => {
+        Movies.findOne({ Title: req.params.Title })
+        .then((movie) => {
+          res.status(200).json(movie);
+        })
+        .catch((error) => {
+          console.error(err);
+          res.status(500).send('Error:' + err);
+        });
+      });</td>
       <td>A JSON object holding data about a single movie that was requested.</td>
     </tr>
     <tr>
       <td>[3] Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
       <td>/movies/genres/:title</td>
       <td>GET</td>
-      <td>None</td>
+      <td>app.get('/movies/genres/:Title', (req, res) => {
+        Movies.findOne({Title: req.params.Title})
+        .then((movie) => {
+          res.status(200).json(movie);
+        })
+        .catch((error) => {
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        })
+      });</td>
       <td>A JSON object with the updated movie data.</td>
     </tr>
     <tr>
       <td>[4] Return data about a movie director (bio, birth year, death year) by name</td>
       <td>/directors/:name</td>
       <td>GET</td>
-      <td>None</td>
+      <td>app.get('/movies/directors/:Name', (req, res) => {
+          Movies.findOne({ Name: req.params.Name})
+          .then((movie) => {
+            res.status(200).json(movie.Director)
+          })
+          .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+          })
+      });</td>
       <td>Returns a JSON object.</td>
     </tr>
     <tr>
       <td>[5] Allow new users to register</td>
       <td>/users</td>
       <td>POST</td>
-      <td>A JSON object containing user data.</td>
+      <td>app.post('/users', (req, res) => {
+        Users.findOne({ Username: req.body.Username })
+        .then((user) => {
+          if (user) {
+            return res.status(400).send(req.body.Username + 'already exists');
+          } else {
+            Users
+            .create({
+              Username: req.body.Username,
+              Password: req.body.Password,
+              Email: req.body.Email,
+              Birthday: req.body.Birthday
+            })
+            .then((user) => {res.status(201).json(user ) })
+            .catch((err) => {
+              console.log(err);
+              res.status(500).send('Error:' + err);
+            })
+          }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error:' + err);
+        });
+      });
+</td>
       <td>Text message that new user was created.</td>
     </tr>
     <tr>
       <td>[6] Allow users to update their user info (username)</td>
       <td>/users/:username</td>
       <td>PUT</td>
-      <td>None</td>
-      <td>Text message that user info was updated.</td>
+      <td>app.put('/users/:Username', (req, res) => {
+        Users.findOneAndUpdate({Username: req.params.Username},
+        { $set:
+          {
+            Username: req.params.Username,
+            Password: req.params. Password,
+            Email: req.params.Email,
+            Birthday: req.params.Birthday
+        }
+      },
+      { new: true }, // This line makes sure that the updated document is returned
+      (err, updatedUser) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send('Error:' + err);
+        } else {
+          res.status(201).json(updatedUser);
+        }
+      });
+      });</td>
+      <td>{
+    "_id": "639f594a298efe834b238de5",
+    "Username": "mikelee111",
+    "Password": "test1234",
+    "Email": "mikelee111@gmail.com",
+    "Birthday": "1988-10-09T00:00:00.000Z",
+    "FavoriteMovies": [
+        "639f555a298efe834b238de1"
+    ]
+}</td>
     </tr>
     <tr>
       <td>[7] Allow users to add a movie to their list of favorites (showing only a text that a movie has been added—more on this later)</td>
       <td>/users/:username/movies/:movieID</td>
       <td>POST</td>
-      <td>A JSON object containing movie data.</td>
-      <td>Delivers an updated JSON object of user favorites.</td>
+      <td>app.post('/users/:Username/movies/:MovieID', (req, res) => {
+        Users.findOneAndUpdate({ Username: req.params.Username }, {
+           $push: { FavoriteMovies: req.params.MovieID }
+         },
+         { new: true }, // This line makes sure that the updated document is returned
+        (err, updatedUser) => {
+          if (err) {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+          } else {
+            res.json(updatedUser);
+          }
+        });
+      });</td>
+      <td>Delivers an updated JSON object of user favorites. Example: {
+    "_id": "63a84801d01545b891f6e3df",
+    "Username": "Monday_Kiz",
+    "Password": "monday123",
+    "Email": "monday@monday.de",
+    "FavoriteMovies": [
+        "639f5650298efe834b238de3"
+    ],
+    "__v": 0
+}</td>
     </tr>
     <tr>
       <td>[8] Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)</td>
       <td>/users/:username/movies/:movieID</td>
       <td>DELETE</td>
-      <td>A JSON object containing movie data.</td>
-      <td>Delivers an updated JSON object of user favorites.</td>
+      <td>app.delete('/users/:Username/movies/:MovieID', (req, res) => {
+        Users.findOneAndUpdate({ Username: req.params.Username }, {
+           $pull: { FavoriteMovies: req.params.MovieID }
+         },
+         { new: true }, // This line makes sure that the updated document is returned
+        (err, updatedUser) => {
+          if (err) {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+          } else {
+            res.json(updatedUser);
+          }
+        });
+      });
+</td>
+      <td>{
+    "_id": "639f594a298efe834b238de5",
+    "Username": "mikelee111",
+    "Password": "test123",
+    "Email": "mikelee111@gmail.com",
+    "Birthday": "1988-10-09T00:00:00.000Z",
+    "FavoriteMovies": [
+        "639f555a298efe834b238de1"
+    ]
+}</td>
     </tr>
     <tr>
       <td>[9] Allow existing users to deregister (showing only a text that a user email has been removed—more on this later)</td>
       <td>/users/:username</td>
       <td>DELETE</td>
-      <td>None</td>
-      <td>Text message that the user was deleted.</td>
+      <td>app.delete('/users/:Username', (req, res) => {
+        Users.findOneAndRemove({ Username: req.params.Username })
+          .then((user) => {
+            if (!user) {
+              res.status(400).send(req.params.Username + ' was not found');
+            } else {
+              res.status(200).send(req.params.Username + ' was deleted.');
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+          });
+      });</td>
+      <td>Text message that the user was deleted. Example: Monday_Kiss_Kiss was deleted.</td>
     </tr>
   </tbody>
   </table>
