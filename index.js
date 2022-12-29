@@ -13,8 +13,8 @@ mongoose.connect('mongodb://localhost:27017/myMovies', { useNewUrlParser: true, 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
-const cors = require('cors');
 
+const cors = require('cors');
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
 app.use(cors({
@@ -170,15 +170,15 @@ app.post('/users',
               Birthday: req.body.Birthday
             })
             .then((user) => { res.status(201).json(user) })
-            .catch((error) => {
-              console.error(error);
-              res.status(500).send('Error: ' + error);
+            .catch((err) => {
+              console.error(err);
+              res.status(500).send('Error: ' + err);
             });
         }
       })
-      .catch((error) => {
-        console.error(error);
-        res.status(500).send('Error: ' + error);
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
       });
   });
 
@@ -315,6 +315,6 @@ app.use((err, req, res, next) => {
 
 // Listen for requests
 const port = process.env.PORT || 8080;
-app.listen(port, '0.0.0.0', () => {
-  console.log('Listening on Port' + port);
+app.listen(port, '0.0.0.0',() => {
+ console.log('Listening on Port ' + port);
 });
