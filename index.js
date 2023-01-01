@@ -9,8 +9,8 @@ const mongoose = require('mongoose');
 const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
-mongoose.connect('mongodb://localhost:27017/myMovies', { useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost:27017/myMovies', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
@@ -77,6 +77,17 @@ let myMovies = [
         director: 'Gareth Edwards'
     },
   ];
+
+
+// RETURN STARTPAGE::
+app.get('/', (req,res) => {
+  res.send('Welcome to my Star Wars Movie Collection!');
+})
+
+// GET DOCUMENTATION::
+app.get('/documentation', (req, res) => {
+  res.sendFile('public/documentation.html', { root: __dirname });
+})
 
 // RETURN ALL MOVIES::
 app.get('/movies', (req, res) => {
