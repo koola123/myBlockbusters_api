@@ -78,6 +78,17 @@ let myMovies = [
     },
   ];
 
+
+// RETURN STARTPAGE::
+app.get('/', (req,res) => {
+  res.send('Welcome to my Star Wars Movie Collection!');
+})
+
+// GET DOCUMENTATION::
+app.get('/documentation', (req, res) => {
+  res.sendFile('public/documentation.html', { root: __dirname });
+})
+
 // RETURN ALL MOVIES::
 app.get('/movies', (req, res) => {
     Movies.find()
