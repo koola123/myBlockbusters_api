@@ -81,7 +81,7 @@ let myMovies = [
 
 // RETURN STARTPAGE::
 app.get('/', (req,res) => {
-  res.send('Welcome to my Star Wars Movie Collection!');
+  res.send('Welcome to "Star Wars Blockbusters"');
 })
 
 // GET DOCUMENTATION::
