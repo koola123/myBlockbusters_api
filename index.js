@@ -48,7 +48,7 @@ app.get('/documentation', (req, res) => {
 })
 
 // RETURN ALL MOVIES::
-app.get('/movies', {session: false}), (req, res) => {
+app.get('/movies', (req, res) => {
     Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
