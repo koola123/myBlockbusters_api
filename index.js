@@ -37,53 +37,9 @@ require('./passport');
 app.use(morgan('common'));
 
 
-let myMovies = [
-    {
-        title: 'The Phantom Menace',
-        director: 'George Lucas'
-    },
-    {
-        title: 'Attack of the Clones',
-        director: 'George Lucas'
-    },
-    {
-        title: 'Revenge of the Sith',
-        director: 'George Lucas'
-    },
-    {
-        title: 'A new Hope',
-        director: 'George Lucas'
-    },
-    {
-        title: 'The Empire Strikes Back',
-        director: 'Irvin Kershner'
-    },
-    {
-        title: 'Return of the Jedi ',
-        director: 'Richard Marquand'
-    },
-    {
-        title: 'The Force Awakens',
-        director: 'J. J. Abrams'
-    },
-    {
-        title: 'The Last Jedi',
-        director: 'Rian Johnson'
-    },
-    {
-        title: 'The Rise of Skywalker',
-        director: 'J. J. Abrams'
-    },
-    {
-        title: 'Rogue One',
-        director: 'Gareth Edwards'
-    },
-  ];
-
-
 // RETURN STARTPAGE::
 app.get('/', (req,res) => {
-  res.send('Welcome to "Star Wars Blockbusters"');
+  res.send('Hi, Welcome to Star Wars Blockbusters!');
 })
 
 // GET DOCUMENTATION::
