@@ -39,7 +39,7 @@ app.use(morgan('common'));
 
 // RETURN STARTPAGE::
 app.get('/', (req,res) => {
-  res.send('Hi, Welcome to Star Wars Blockbusters!');
+  res.send('Star Wars Blockbusters for Everyone!');
 })
 
 // GET DOCUMENTATION::
@@ -48,7 +48,7 @@ app.get('/documentation', (req, res) => {
 })
 
 // RETURN ALL MOVIES::
-app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
+app.get('/movies', {session: false}), (req, res) => {
     Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
