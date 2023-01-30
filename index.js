@@ -81,7 +81,11 @@ let myMovies = [
 
 // RETURN STARTPAGE::
 app.get('/', (req,res) => {
+<<<<<<< Updated upstream
   res.send('Welcome to "Star Wars Blockbusters"');
+=======
+  res.send('Welcome to Star Wars Blockbusters!');
+>>>>>>> Stashed changes
 })
 
 // GET DOCUMENTATION::
@@ -90,7 +94,7 @@ app.get('/documentation', (req, res) => {
 })
 
 // RETURN ALL MOVIES::
-app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
+app.get('/movies', (req, res) => {
     Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
