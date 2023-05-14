@@ -189,26 +189,40 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req
   (required)
   Birthday: Date
 }*/
-app.put('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res) => {
-  Users.findOneAndUpdate({Username: req.params.Username},
-  { $set:
+app.put('/users/:Username',
+[
+  check('Username', 'Username is required').isLength({min: 5}), // minimum length of username is 5 char
+  check('Username', 'Username contains non alphanumeric characters - not allowed').isAlphanumeric(),
+  check('Password', 'Password is required').not().isEmpty(), // password input must not be empty
+  check('Email', 'Email does not appear to be valid').isEmail()
+],
+passport.authenticate('jwt', {session: false}), (req, res) => {
+  let errors = validationResult(req); 
+      if (!errors.isEmpty()){ //if errors is not empty (if there are arreors--->)
+          return res.status(422).json({errors: errors.array()}) //if errors in validation occur then send back to client in an array
+      }
+  console.log(Users)
+      // if error occurs rest of the code will not be executed
+  let hashedPassword = Users.hashPassword(req.body.Password);
+
+  Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
     {
       Username: req.body.Username,
-      Password: req.body.Password,
+      Password: hashedPassword,
       Email: req.body.Email,
       Birthday: req.body.Birthday
-  }
-},
-{ new: true }, // This line makes sure that the updated document is returned
-(err, updatedUser) => {
-  if (err) {
-    console.log(err);
-    res.status(500).send('Error:' + err);
-  } else {
-    res.status(201).json(updatedUser);
-  }
+    }
+  },
+  { new: true }) // This line makes sure that the updated document is returned
+  .then(( updatedUser) => {
+      res.json(updatedUser);
+  })
+  .catch( (err)=> {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } );
 });
-});
+    
 
 // Add movie to user favorites
 // app.post('/users/:favorites/movies/:movie/', (req, res) => {
