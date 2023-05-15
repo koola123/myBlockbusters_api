@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080','http://testsite.com', 'http://localhost:1234', 'https://my-blockbusters.herokuapp.com/','http://localhost:4200'];
+let allowedOrigins = ['http://localhost:8080','http://testsite.com', 'http://localhost:1234', 'https://my-blockbusters.herokuapp.com/','http://localhost:4200', 'https://koola123.github.io/myFlix-Angular-client/welcome'];
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -197,7 +197,7 @@ app.put('/users/:Username',
   check('Email', 'Email does not appear to be valid').isEmail()
 ],
 passport.authenticate('jwt', {session: false}), (req, res) => {
-  let errors = validationResult(req); 
+  let errors = validationResult(req);
       if (!errors.isEmpty()){ //if errors is not empty (if there are arreors--->)
           return res.status(422).json({errors: errors.array()}) //if errors in validation occur then send back to client in an array
       }
@@ -222,7 +222,7 @@ passport.authenticate('jwt', {session: false}), (req, res) => {
       res.status(500).send('Error: ' + err);
     } );
 });
-    
+
 
 // Add movie to user favorites
 // app.post('/users/:favorites/movies/:movie/', (req, res) => {
