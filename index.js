@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 const cors = require('cors');
 let allowedOrigins = ['http://localhost:8080','http://testsite.com',
 'http://localhost:1234', 'https://my-blockbusters.herokuapp.com/',
-'http://localhost:4200', 'https://koola123.github.io/myFlix-Angular-client'];
+'http://localhost:4200', 'https://koola123.github.io'];
 
 app.use(cors({
   origin: (origin, callback) => {
