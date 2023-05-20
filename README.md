@@ -30,8 +30,8 @@ Setup a mongodb database.
 Clone the repository:
 
 ```
-git clone https://github.com/kal40/movie-api.git
-cd movie-api
+git clone https://github.com/koola123/myflix-api.git
+cd myflix-api
 ```
 Create a file and name it <i>.env.development.local</i> for environment variables and add the next content:
 
