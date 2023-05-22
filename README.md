@@ -11,7 +11,7 @@ This site was built using [Heroku GitHub Deploys](https://devcenter.heroku.com/a
 
 <br>
 
-<strong>[Link to Documentation](https://my-blockbusters.herokuapp.com/documentation)</strong>
+<strong>[Link to documentation](https://my-blockbusters.herokuapp.com/documentation)</strong>
 
 <br>
 
