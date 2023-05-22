@@ -7,11 +7,11 @@ This is a he server-side component of a “movies” web application. The web ap
 
 The main purpose of this app is to present how I create a REST API architecture.
 
-This site was built using [Heroku GitHub Deploys]().
+This site was built using [Heroku GitHub Deploys](https://devcenter.heroku.com/articles/github-integration).
 
 <br>
 
-<strong>[LIVE DEMO](https://my-blockbusters.herokuapp.com/documentation)</strong>
+<strong>[Link to documentation](https://my-blockbusters.herokuapp.com/documentation)</strong>
 
 <br>
 
