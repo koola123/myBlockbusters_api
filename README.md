@@ -9,7 +9,11 @@ The main purpose of this app is to present how I create a REST API architecture.
 
 This site was built using [Heroku GitHub Deploys]().
 
-<strong>[LIVE DEMO]()</strong>
+<br>
+
+<strong>[LIVE DEMO](https://my-blockbusters.herokuapp.com/documentation)</strong>
+
+<br>
 
 ## Key Features
 - Express library for endpoint routing
@@ -23,16 +27,24 @@ This site was built using [Heroku GitHub Deploys]().
 
 Install nodejs LTS or the latest version.
 
-Setup a mongodb database.
+Setup a mongodb database. 
 
-### Installation
+<br>
+
+## Installation
+
+<br>
 
 Clone the repository:
 
 ```
-git clone https://github.com/koola123/myflix-api.git
+git clone https://github.com/koola123/myFlix-API.git
 cd myflix-api
+npm install
 ```
+
+then run the app with `node index.js`
+
 Create a file and name it <i>.env.development.local</i> for environment variables and add the next content:
 
 ````
@@ -46,13 +58,19 @@ Then run the following commands:
 npm install
 npm run start
 
-#### Testing
+<br>
 
-The endpoints can be tested directly from the [documentation]() or tested via Postman.
+## Testing
 
-### Dependencies
+The endpoints can be tested directly from the [documentation](https://my-blockbusters.herokuapp.com/documentation) or tested via Postman.
+
+<br>
+
+## Dependencies
 
 See <i>package.json</i>.
+
+<br>
 
 Version 1.0.0
 
