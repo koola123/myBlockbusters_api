@@ -9,11 +9,8 @@ The main purpose of this app is to present how I create a REST API architecture.
 
 This site was built using [Heroku GitHub Deploys](https://devcenter.heroku.com/articles/github-integration).
 
-<br>
-
 <strong>[Link to documentation](https://my-blockbusters.herokuapp.com/documentation)</strong>
 
-<br>
 
 ## Key Features
 - Express library for endpoint routing
@@ -23,17 +20,14 @@ This site was built using [Heroku GitHub Deploys](https://devcenter.heroku.com/a
 
 ## Getting started
 
-### Prerequisites
+#### Prerequisites
 
 Install nodejs LTS or the latest version.
 
 Setup a mongodb database. 
 
-<br>
 
-## Installation
-
-<br>
+## 🛠 Installation
 
 Clone the repository:
 
@@ -58,17 +52,13 @@ Then run the following commands:
 npm install
 npm run start
 
-<br>
-
 ## Testing
 
 The endpoints can be tested directly from the [documentation](https://my-blockbusters.herokuapp.com/documentation) or tested via Postman.
 
-<br>
-
 ## Dependencies
 
-See <i>package.json</i>.
+See package.json
 
 <br>
 
