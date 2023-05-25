@@ -11,7 +11,7 @@ This site was built using [Heroku GitHub Deploys](https://devcenter.heroku.com/a
 
 <strong>[Link to documentation](https://my-blockbusters.herokuapp.com/documentation)</strong>
 
-
+## Screenshot of documentation
 <img src="img/myflixAPI.png" width="800px">
 
 <br>
