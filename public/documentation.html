@@ -181,7 +181,7 @@
         "Username": string,
         "Password": string,
         "Email": string,
-        "Birthday": string,
+        "Birthday": date string,
       }
       </td>
       <td>Text message that new user was created.</td>
@@ -190,7 +190,12 @@
       <td>[6] Allow users to update their user info (username)</td>
       <td>/users/:username</td>
       <td>PUT</td>
-      <td>NONE</td>
+      <td>{
+        "Username": string,
+        "Password": string,
+        "Email": string,
+        "Birthday": date string,
+      }</td>
       <td>{
     "_id": "639f594a298efe834b238de5",
     "Username": "mikelee111",
