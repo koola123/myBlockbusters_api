@@ -15,6 +15,10 @@ This site was built using [Heroku GitHub Deploys](https://devcenter.heroku.com/a
 
 <br>
 
+<img src="img/myflixAPI.png" width="800px">
+
+<br>
+
 ## Key Features
 - Express library for endpoint routing
 - Uses MongoDB noSQL database deployed on MongoDB Atlas
